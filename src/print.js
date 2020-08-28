@@ -20,5 +20,5 @@ function printOwing (invoice) {
 }
 
 module.exports = {
-  print
+  printOwing
 };
