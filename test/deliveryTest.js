@@ -56,4 +56,39 @@ deliveryTest('delivery case 3. given anOrder and isPush when deliveryDate then r
   t.is(result, 4);
 });
 
+deliveryTest('delivery case 4. given anOrder and isPush when deliveryDate then return 4', t => {
+  // given
+  const isRush = false;
+  const anOrder = {
+    "deliveryState": "MA",
+    "placedOn": {
+      "plusDays": function plusDays(deliveryTime) {
+        return deliveryTime;
+      }
+    },
+  };
+
+  // when
+  let result = deliveryDate(anOrder, isRush);
+  // then
+  t.is(result, 4);
+});
+
+deliveryTest('delivery case 5. given anOrder and isPush when deliveryDate then return 5', t => {
+  // given
+  const isRush = false;
+  const anOrder = {
+    "deliveryState": "ME",
+    "placedOn": {
+      "plusDays": function plusDays(deliveryTime) {
+        return deliveryTime;
+      }
+    },
+  };
+
+  // when
+  let result = deliveryDate(anOrder, isRush);
+  // then
+  t.is(result, 5);
+});
 
