@@ -22,3 +22,4 @@ printTest('printOwing case 1. given invoice when printOwing then print details',
   printOwing(invoice);
   t.pass();
 })
+
