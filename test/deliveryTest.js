@@ -20,4 +20,22 @@ deliveryTest('delivery case 1. given anOrder and isPush when deliveryDate then r
   t.is(result, 2);
 });
 
+deliveryTest('delivery case 2. given anOrder and isPush when deliveryDate then return 3', t => {
+  // given
+  const isRush = true;
+  const anOrder = {
+    "deliveryState": "NY",
+    "placedOn": {
+      "plusDays": function plusDays(deliveryTime) {
+        return deliveryTime;
+      }
+    },
+  };
+
+  // when
+  let result = deliveryDate(anOrder, isRush);
+  // then
+  t.is(result, 3);
+});
+
 
