@@ -16,4 +16,19 @@ employeeTest('employee case 1. given name and type when toString then return res
 
 });
 
+employeeTest('employee case 2. given name type when toString then return throw error', t => {
+    // given
+    let name = 'AAA';
+    let type = 'BBB';
+
+    // when
+    try {
+        new Employee(name, type);
+        t.fail();
+    } catch (error) {
+        t.is(error.message, "Employee cannot be of type BBB");
+    }
+
+
+});
 
