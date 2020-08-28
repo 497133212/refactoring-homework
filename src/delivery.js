@@ -16,29 +16,31 @@ function calculateDeliveryTimeIsRushIsTrue(anOrder) {
   return anOrder.placedOn.plusDays(1 + deliveryTime);
 }
 
+function calculateDeliveryIsRushIsFalse(anOrder) {
+  let deliveryTime;
+  if ([
+    'MA',
+    'CT',
+    'NY',
+  ].includes(anOrder.deliveryState)) {
+    deliveryTime = 2;
+  } else if ([
+    'ME',
+    'NH',
+  ].includes(anOrder.deliveryState)) {
+    deliveryTime = 3;
+  } else {
+    deliveryTime = 4;
+  }
+  return anOrder.placedOn.plusDays(2 + deliveryTime);
+}
+
 function deliveryDate (anOrder, isRush) {
   if (isRush) {
     return calculateDeliveryTimeIsRushIsTrue(anOrder);
   }
   else {
-    let deliveryTime;
-    if ([
-      'MA',
-      'CT',
-      'NY',
-    ].includes(anOrder.deliveryState)) {
-      deliveryTime = 2;
-    }
-    else if ([
-      'ME',
-      'NH',
-    ].includes(anOrder.deliveryState)) {
-      deliveryTime = 3;
-    }
-    else {
-      deliveryTime = 4;
-    }
-    return anOrder.placedOn.plusDays(2 + deliveryTime);
+    return calculateDeliveryIsRushIsFalse(anOrder);
   }
 }
 
